@@ -57,3 +57,26 @@ target_link_libraries(PorjectName ${OpenCV_LIBS})
 /// 标准环境路径
 D:\***\****\opencv-build\bin
 ```
+
+## 加载一个静态库
+```c++
+set(GLFW_INCLUDE_DIR D:/glfw-3.3.9.bin.WIN64/include)
+set(GLAD_INCLUDE_DIR D:/glad/include)
+set(GLFW_LIB D:/glfw-3.3.9.bin.WIN64/lib-mingw-w64/glfw.lib)
+
+include_directories(
+	${GLFW_INCLUDE_DIR}
+	${GLAD_INCLUDE_DIR}
+)
+
+set(PROJECT_SOURCES WIN32
+	main.cpp
+	${GLAD_INCLUDE_DIR}/../src/glad.c
+)
+
+add_excutable(${PROJECT_NAME} ${PROJECT_SOURCES})
+
+target_link_libraries(${PROJECT_NAME}
+	${GLFW_LIB}
+)
+```
